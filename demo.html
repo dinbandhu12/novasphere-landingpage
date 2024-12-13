@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Cards</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+
+    .cards-container {
+      display: flex;
+      gap: 10px;
+      width: 80%;
+    }
+
+    .card {
+      flex: 1;
+      height: 400px;
+      background-color: #3498db;
+      transition: flex 0.5s ease-in-out, transform 0.5s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      color: white;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      cursor: pointer;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 1.5rem;
+    }
+
+    .card p {
+      margin: 0 0 20px;
+      font-size: 1rem;
+    }
+
+    .contact-button {
+      background-color: white;
+      color: #3498db;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: width 0.8s ease-in-out, transform 0.8s ease;
+      width: auto;
+      height: auto;
+
+    }
+
+    .card:hover .contact-button {
+      width: 100%;
+      transition: width 0.8s ease-in-out, transform 0.8s ease;
+    }
+
+    .card.shrink {
+      flex: 0.5;
+      transform: scale(0.95);
+    }
+  </style>
+</head>
+<body>
+  <div class="cards-container">
+    <div class="card" id="card1">
+      <h2>Card 1</h2>
+      <p>This is a subheading for Card 1.</p>
+      <button class="contact-button">Contact</button>
+    </div>
+    <div class="card" id="card2">
+      <h2>Card 2</h2>
+      <p>This is a subheading for Card 2.This is a subheading for Card 2.This is a subheading for Card 2.</p>
+      <button class="contact-button">Contact</button>
+    </div>
+    <div class="card" id="card3">
+      <h2>Card 3</h2>
+      <p>This is a subheading for Card 3.</p>
+      <button class="contact-button">Contact</button>
+    </div>
+    <div class="card" id="card4">
+      <h2>Card 4</h2>
+      <p>This is a subheading for Card 4.</p>
+      <button class="contact-button">Contact</button>
+    </div>
+  </div>
+
+  <script>
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+      card.addEventListener('mouseover', () => {
+        cards.forEach(c => {
+          if (c !== card) {
+            c.classList.add('shrink');
+          }
+        });
+      });
+
+      card.addEventListener('mouseout', () => {
+        cards.forEach(c => {
+          c.classList.remove('shrink');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
